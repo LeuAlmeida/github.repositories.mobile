@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Keyboard } from 'react-native';
+import { StyleSheet, Keyboard, ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -27,13 +27,17 @@ const styles = StyleSheet.create({
 });
 
 export default class Main extends Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     newUser: '',
     users: [],
+    loading: false,
   };
 
   handleAddUser = async () => {
     const { users, newUser } = this.state;
+
+    this.setState({ loading: true });
 
     const response = await api.get(`/users/${newUser}`);
 
@@ -47,17 +51,18 @@ export default class Main extends Component {
     this.setState({
       users: [...users, data],
       newUser: '',
+      loading: false,
     });
 
     Keyboard.dismiss();
   };
 
   render() {
-    const { newUser, users } = this.state;
+    const { newUser, users, loading } = this.state;
 
     return (
       <>
-        <Header title="Teste" />
+        <Header title="Usuários" />
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -75,8 +80,12 @@ export default class Main extends Component {
                 returnKeyType="send"
                 onSubmitEditing={this.handleAddUser}
               />
-              <SubmitButton onPress={this.handleAddUser}>
-                <Icon name="add" size={20} color="#f15b84" />
+              <SubmitButton loading={loading} onPress={this.handleAddUser}>
+                {loading ? (
+                  <ActivityIndicator color="#f15b84" />
+                ) : (
+                  <Icon name="add" size={20} color="#f15b84" />
+                )}
               </SubmitButton>
             </Form>
 
