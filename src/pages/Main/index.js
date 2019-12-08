@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../services/api';
 
-import Header from '../../components/Header';
 import {
   Container,
   Form,
@@ -74,56 +73,59 @@ export default class Main extends Component {
     Keyboard.dismiss();
   };
 
+  handleNavigate = () => {
+    const { navigation } = this.props;
+
+    navigation.navigate('User');
+  };
+
   render() {
     const { newUser, users, loading } = this.state;
 
     return (
-      <>
-        <Header title="Usuários" />
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          colors={['#f15b84', '#ee5676', '#e54649']}
-          style={styles.linearGradient}
-        >
-          <Container>
-            <Form>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
-                placeholder="Adicionar usuário"
-                value={newUser}
-                onChangeText={text => this.setState({ newUser: text })}
-                returnKeyType="send"
-                onSubmitEditing={this.handleAddUser}
-              />
-              <SubmitButton loading={loading} onPress={this.handleAddUser}>
-                {loading ? (
-                  <ActivityIndicator color="#f15b84" />
-                ) : (
-                  <Icon name="add" size={20} color="#f15b84" />
-                )}
-              </SubmitButton>
-            </Form>
-
-            <List
-              data={users}
-              keyExtractor={user => user.login}
-              renderItem={({ item }) => (
-                <User>
-                  <Avatar source={{ uri: item.avatar }} />
-                  <Name>{item.name}</Name>
-                  <Bio>{item.bio}</Bio>
-
-                  <ProfileButton onPress={() => {}}>
-                    <ProfileButtonText>Ver Perfil</ProfileButtonText>
-                  </ProfileButton>
-                </User>
-              )}
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={['#f15b84', '#ee5676', '#e54649']}
+        style={styles.linearGradient}
+      >
+        <Container>
+          <Form>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="Adicionar usuário"
+              value={newUser}
+              onChangeText={text => this.setState({ newUser: text })}
+              returnKeyType="send"
+              onSubmitEditing={this.handleAddUser}
             />
-          </Container>
-        </LinearGradient>
-      </>
+            <SubmitButton loading={loading} onPress={this.handleAddUser}>
+              {loading ? (
+                <ActivityIndicator color="#f15b84" />
+              ) : (
+                <Icon name="add" size={20} color="#f15b84" />
+              )}
+            </SubmitButton>
+          </Form>
+
+          <List
+            data={users}
+            keyExtractor={user => user.login}
+            renderItem={({ item }) => (
+              <User>
+                <Avatar source={{ uri: item.avatar }} />
+                <Name>{item.name}</Name>
+                <Bio>{item.bio}</Bio>
+
+                <ProfileButton onPress={this.handleNavigate}>
+                  <ProfileButtonText>Ver Perfil</ProfileButtonText>
+                </ProfileButton>
+              </User>
+            )}
+          />
+        </Container>
+      </LinearGradient>
     );
   }
 }
