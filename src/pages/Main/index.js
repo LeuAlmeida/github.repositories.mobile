@@ -28,7 +28,7 @@ export default function Main() {
             placeholder="Adicionar usuário"
           />
           <SubmitButton>
-            <Icon name="add" size={20} color="#FFF" />
+            <Icon name="add" size={20} color="#f15b84" />
           </SubmitButton>
         </Form>
       </Container>
