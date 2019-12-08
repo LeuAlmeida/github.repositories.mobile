@@ -9,25 +9,23 @@ export const Container = styled.View`
 export const Form = styled.View`
   flex-direction: row;
   padding-bottom: 20px;
-  border-bottom-width: 1px;
-  border-color: #eee;
 `;
 export const Input = styled.TextInput.attrs({
-  placeholdeTextColor: '#999',
+  placeholderTextColor: '#ffffffa1',
 })`
   flex: 1;
   height: 40px;
-  background: #eee;
-  border-radius: 4px;
+  background: transparent;
   padding: 0 15px;
-  border: 1px solid #eee;
+  border-bottom-width: 1px;
+  border-color: #fff;
 `;
 
 export const SubmitButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
-  background: #7159c1;
-  border-radius: 4px;
+  background: #fff;
+  border-radius: 40px;
   margin-left: 10px;
   padding: 0 12px;
 `;
