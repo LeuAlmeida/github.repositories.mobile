@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
 });
 
 export default class Main extends Component {
+  // eslint-disable-next-line react/static-property-placement
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func,
+    }).isRequired,
+  };
+
   // eslint-disable-next-line react/state-in-constructor
   state = {
     newUser: '',
@@ -78,13 +85,6 @@ export default class Main extends Component {
     const { navigation } = this.props;
 
     navigation.navigate('User', { user });
-  };
-
-  // eslint-disable-next-line react/no-typos
-  static PropTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func,
-    }).isRequired,
   };
 
   static navigationOptions = {
