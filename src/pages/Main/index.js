@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import Header from '../../components/Header';
 import { Container, Form, Input, SubmitButton } from './styles';
 
 const styles = StyleSheet.create({
@@ -14,25 +14,28 @@ const styles = StyleSheet.create({
 
 export default function Main() {
   return (
-    <LinearGradient
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      colors={['#f15b84', '#ee5676', '#e54649']}
-      style={styles.linearGradient}
-    >
-      <Container>
-        <Form>
-          <Input
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Adicionar usuário"
-          />
-          <SubmitButton>
-            <Icon name="add" size={20} color="#f15b84" />
-          </SubmitButton>
-        </Form>
-      </Container>
-    </LinearGradient>
+    <>
+      <Header title="Teste" />
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={['#f15b84', '#ee5676', '#e54649']}
+        style={styles.linearGradient}
+      >
+        <Container>
+          <Form>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="Adicionar usuário"
+            />
+            <SubmitButton>
+              <Icon name="add" size={20} color="#f15b84" />
+            </SubmitButton>
+          </Form>
+        </Container>
+      </LinearGradient>
+    </>
   );
 }
 
