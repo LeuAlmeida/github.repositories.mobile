@@ -16,9 +16,10 @@ export const Input = styled.TextInput.attrs({
   flex: 1;
   height: 40px;
   background: transparent;
-  padding: 0 15px;
+  padding: 0 5px;
   border-bottom-width: 1px;
   border-color: #fff;
+  color: #fff;
 `;
 
 export const SubmitButton = styled(RectButton)`
