@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -12,31 +12,39 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Main() {
-  return (
-    <>
-      <Header title="Teste" />
-      <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        colors={['#f15b84', '#ee5676', '#e54649']}
-        style={styles.linearGradient}
-      >
-        <Container>
-          <Form>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Adicionar usuário"
-            />
-            <SubmitButton>
-              <Icon name="add" size={20} color="#f15b84" />
-            </SubmitButton>
-          </Form>
-        </Container>
-      </LinearGradient>
-    </>
-  );
+export default class Main extends Component {
+  state = {
+    users: [],
+  };
+
+  render() {
+    const { users } = this.state;
+
+    return (
+      <>
+        <Header title="Teste" />
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          colors={['#f15b84', '#ee5676', '#e54649']}
+          style={styles.linearGradient}
+        >
+          <Container>
+            <Form>
+              <Input
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Adicionar usuário"
+              />
+              <SubmitButton>
+                <Icon name="add" size={20} color="#f15b84" />
+              </SubmitButton>
+            </Form>
+          </Container>
+        </LinearGradient>
+      </>
+    );
+  }
 }
 
 Main.navigationOptions = {
