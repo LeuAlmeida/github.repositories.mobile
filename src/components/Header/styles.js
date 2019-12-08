@@ -9,5 +9,5 @@ export const HeaderView = styled.View`
 
 export const HeaderTitle = styled.Text`
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
 `;
