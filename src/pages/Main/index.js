@@ -15,6 +15,7 @@ import {
   List,
   User,
   Avatar,
+  RemoveIcon,
   Name,
   Bio,
   ProfileButton,
@@ -87,6 +88,14 @@ export default class Main extends Component {
     navigation.navigate('User', { user });
   };
 
+  handleDelete = user => {
+    const { users } = this.state;
+
+    this.setState({
+      users: users.filter(u => u !== user),
+    });
+  };
+
   static navigationOptions = {
     title: 'Usuários',
   };
@@ -127,6 +136,9 @@ export default class Main extends Component {
             renderItem={({ item }) => (
               <User>
                 <Avatar source={{ uri: item.avatar }} />
+                <RemoveIcon onPress={() => this.handleDelete(item)}>
+                  <Icon name="delete" size={20} color="#fff" />
+                </RemoveIcon>
                 <Name>{item.name}</Name>
                 <Bio>{item.bio}</Bio>
 

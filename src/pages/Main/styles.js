@@ -50,6 +50,14 @@ export const Avatar = styled.Image`
   background: #eee;
 `;
 
+export const RemoveIcon = styled(RectButton)`
+  position: absolute;
+  right: 80;
+  background: #ee5676;
+  border-radius: 30px;
+  padding: 5px;
+`;
+
 export const Name = styled.Text`
   font-size: 14px;
   color: #fff;
