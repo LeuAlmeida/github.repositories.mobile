@@ -21,7 +21,7 @@ export const Avatar = styled.Image`
 
 export const Name = styled.Text`
   font-size: 20px;
-  color: #333;
+  color: #fff;
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
@@ -30,7 +30,7 @@ export const Name = styled.Text`
 export const Bio = styled.Text`
   font-size: 14px;
   line-height: 18px;
-  color: #999;
+  color: #ffffffad;
   margin-top: 5px;
   text-align: center;
 `;
@@ -43,7 +43,7 @@ export const Stars = styled.FlatList.attrs({
 
 export const Starred = styled.View`
   background: #f5f5f5;
-  border-radius: 4px;
+  border-radius: 40px;
   padding: 10px 15px;
   margin-bottom: 20px;
   flex-direction: row;
