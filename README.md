@@ -23,11 +23,10 @@ React Native application made to list github users and who him starred.
 
 List how many users do you want. With this you can list repositories and what starred him has with a detailed loader and interface.
 
-<h3 align="center">:octocat: Application Demo</h3>
+<h3>:octocat: Application Demo</h3>
 
-<p align="center">
-<img src="tmp/repo.gif" />
-Incoming...
+<p>
+<img src="tmp/repo.gif" width="300px" />
 </p>
 
 <hr />
