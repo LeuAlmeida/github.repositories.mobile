@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { View } from 'react-native';
+import { Interface } from './styles';
 
-// import { Container } from './styles';
+export default function Repository({ navigation }) {
+  const repository = navigation.getParam('repository');
 
-export default class Repository extends Component {
-  render() {
-    return <View />;
-  }
+  return <Interface source={{ uri: repository.html_url }} />;
 }
+
+Repository.propTypes = {
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func,
+  }).isRequired,
+};
+
+Repository.navigationOptions = ({ navigation }) => ({
+  title: navigation.getParam('repository').name,
+});
