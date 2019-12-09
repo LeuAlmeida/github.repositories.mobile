@@ -43,7 +43,7 @@ export const Stars = styled.FlatList.attrs({
 
 export const Starred = styled.View`
   background: #f5f5f5;
-  border-radius: 40px;
+  border-radius: 30px;
   padding: 10px 15px;
   margin-bottom: 20px;
   flex-direction: row;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import LinearGradient from 'react-native-linear-gradient';
 import api from '../../services/api';
 
 import {
@@ -16,6 +17,12 @@ import {
   Title,
   Author,
 } from './styles';
+
+const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
+});
 
 export default class User extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -52,31 +59,38 @@ export default class User extends Component {
     const user = navigation.getParam('user');
 
     return (
-      <Container>
-        <Header loading={loading}>
-          <Avatar source={{ uri: user.avatar }} />
-          <Name>{user.name}</Name>
-          <Bio>{user.bio}</Bio>
-        </Header>
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={['#f15b84', '#ee5676', '#e54649']}
+        style={styles.linearGradient}
+      >
+        <Container>
+          <Header loading={loading}>
+            <Avatar source={{ uri: user.avatar }} />
+            <Name>{user.name}</Name>
+            <Bio>{user.bio}</Bio>
+          </Header>
 
-        {loading ? (
-          <ActivityIndicator color="#333" style={{ flex: 1 }} size={28} />
-        ) : (
-          <Stars
-            data={stars}
-            keyExtractor={star => String(star.id)}
-            renderItem={({ item }) => (
-              <Starred>
-                <OwnerAvatar source={{ uri: item.owner.avatar_url }} />
-                <Info>
-                  <Title>{item.name}</Title>
-                  <Author>{item.owner.login}</Author>
-                </Info>
-              </Starred>
-            )}
-          />
-        )}
-      </Container>
+          {loading ? (
+            <ActivityIndicator color="#fff" style={{ flex: 1 }} size={28} />
+          ) : (
+            <Stars
+              data={stars}
+              keyExtractor={star => String(star.id)}
+              renderItem={({ item }) => (
+                <Starred>
+                  <OwnerAvatar source={{ uri: item.owner.avatar_url }} />
+                  <Info>
+                    <Title>{item.name}</Title>
+                    <Author>{item.owner.login}</Author>
+                  </Info>
+                </Starred>
+              )}
+            />
+          )}
+        </Container>
+      </LinearGradient>
     );
   }
 }
