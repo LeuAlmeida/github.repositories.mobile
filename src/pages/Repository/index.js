@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Interface } from './styles';
 
-export default function Repository({ navigation }) {
-  const repository = navigation.getParam('repository');
+export default class Repository extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam('repository').name,
+  });
 
-  return <Interface source={{ uri: repository.html_url }} />;
+  // eslint-disable-next-line react/state-in-constructor
+  state = {
+    thisRepo: '',
+  };
+
+  componentDidMount() {
+    const { navigation } = this.props;
+
+    const repository = navigation.getParam('repository');
+
+    this.setState({ thisRepo: repository });
+  }
+
+  render() {
+    const { thisRepo } = this.state;
+
+    return <Interface source={{ uri: thisRepo.html_url }} />;
+  }
 }
 
 Repository.propTypes = {
