@@ -78,7 +78,7 @@ export default class User extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { stars, loading, loadMore } = this.state;
+    const { stars, loading } = this.state;
     const user = navigation.getParam('user');
 
     return (
