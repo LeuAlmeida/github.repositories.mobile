@@ -26,7 +26,7 @@ List how many users do you want. With this you can list repositories and what st
 <h3 align="center">:octocat: Application Demo</h3>
 
 <p align="center">
-<!-- <img src="tmp/repo.gif" /> -->
+<img src="tmp/repo.gif" />
 Incoming...
 </p>
 
